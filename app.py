@@ -1,8 +1,9 @@
 import streamlit as st
-import nltk
-nltk.download('punkt')
 import torch
 import torch.nn as nn
+# --- ADD NLTK IMPORT HERE ---
+import nltk
+nltk.download('punkt')
 from nltk.tokenize import word_tokenize
 import re
 import os
@@ -10,6 +11,17 @@ import requests # Make sure to add 'requests' to your requirements.txt
 from tqdm import tqdm
 from model import TextGenerator # Imports your model class from model.py
 
+# --- NEW: Download NLTK Data on Startup ---
+# This is CRUCIAL for Streamlit Cloud deployment
+try:
+    nltk.data.find('tokenizers/punkt')
+    print("NLTK 'punkt' tokenizer already downloaded.")
+except LookupError:
+    print("NLTK 'punkt' tokenizer not found. Downloading...")
+    # Make sure 'nltk' is in your requirements.txt
+    nltk.download('punkt', quiet=True)
+    print("NLTK 'punkt' downloaded.")
+# --- END NLTK DOWNLOAD ---
 # --- Configuration & Constants ---
 st.set_page_config(
     page_title="Creative Text Generator",
