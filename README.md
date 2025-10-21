@@ -1,9 +1,8 @@
 🎨 Creative Text Generator — End-to-End NLP Project (PyTorch & Streamlit)
 
-(https://creative-text-generator-zu6p6wmqnffrcxkbjamazk.streamlit.app/) 
-(https://github.com/mackk7/Creative-Text-Generator.git)
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://creative-text-generator-zu6p6wmqnffrcxkbjamazk.streamlit.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/mackk7/Creative-Text-Generator.git)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 
 
@@ -84,7 +83,7 @@ python preprocess.py
 4. Configure Model URL
 
 Edit app.py → find MODEL_URL = ""
-https://www.dropbox.com/scl/fi/may99yg8hro9571prwlv8/creative_text_generator.pth?rlkey=4xft0gnpgq68r8bbietfpjtal&st=d98r0pak&dl=0
+https://www.dropbox.com/scl/fi/may99yg8hro9571prwlv8/creative_text_generator.pth?rlkey=4xft0gnpgq68r8bbietfpjtal&st=d98r0pak&dl=1
 
 5. Run the App
 streamlit run app.py
@@ -107,8 +106,6 @@ Mayank
 
 Project built with ❤️ using PyTorch & Streamlit
 
-🪪 License
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 
 
