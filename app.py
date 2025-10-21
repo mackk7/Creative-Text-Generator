@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 # --- ADD NLTK IMPORT HERE ---
 import nltk
-nltk.download('punkt')
+import os
 from nltk.tokenize import word_tokenize
 import re
 import os
@@ -11,42 +11,35 @@ import requests # Make sure to add 'requests' to your requirements.txt
 from tqdm import tqdm
 from model import TextGenerator # Imports your model class from model.py
 
-# --- ADD NLTK IMPORT HERE ---
-import nltk
-# --- END NLTK IMPORT ---
-
-
-# --- FINAL NLTK FIX: Explicit Download & Path ---
-# This is the most robust way to ensure NLTK finds its data on Streamlit Cloud.
-NLTK_DATA_PATH = os.path.join(os.path.expanduser("~"), "nltk_data") # Define a path likely writable
-
-# Ensure this path exists in NLTK's search paths
+# Define a writable path in Streamlit Cloud
+NLTK_DATA_PATH = os.path.join(os.getcwd(), "nltk_data")
 if NLTK_DATA_PATH not in nltk.data.path:
     nltk.data.path.append(NLTK_DATA_PATH)
     print(f"Appended {NLTK_DATA_PATH} to NLTK data path.")
 
-# Function to download NLTK data if missing
-def download_nltk_data(package_id, download_dir):
+# Helper function to download any NLTK package if missing
+def ensure_nltk_package(pkg_name):
     try:
-        nltk.data.find(f'tokenizers/{package_id}')
-        print(f"NLTK '{package_id}' resource already found.")
+        nltk.data.find(f"tokenizers/{pkg_name}")
+        print(f"NLTK '{pkg_name}' already exists.")
     except LookupError:
-        print(f"NLTK '{package_id}' resource not found. Attempting download to {download_dir}...")
         try:
-            nltk.download(package_id, download_dir=download_dir, quiet=False) # Use quiet=False for logs
-            # Verify immediately after download
-            nltk.data.find(f'tokenizers/{package_id}')
-            print(f"NLTK '{package_id}' downloaded and verified successfully.")
+            print(f"Downloading NLTK '{pkg_name}' to {NLTK_DATA_PATH}...")
+            nltk.download(pkg_name, download_dir=NLTK_DATA_PATH, quiet=False)
+            nltk.data.find(f"tokenizers/{pkg_name}")  # Verify
+            print(f"NLTK '{pkg_name}' downloaded successfully.")
         except Exception as e:
-            st.error(f"FATAL ERROR: Failed to download NLTK '{package_id}' data: {e}")
-            st.error("Deployment cannot continue without essential NLTK data.")
-            st.stop() # Stop the app if download fails
+            st.error(f"FATAL ERROR: Could not download NLTK '{pkg_name}': {e}")
+            st.stop()
 
-# Download BOTH punkt and its dependency punkt_tab
-download_nltk_data('punkt', NLTK_DATA_PATH)
-# download_nltk_data('punkt_tab', NLTK_DATA_PATH) # Usually included with punkt, but let's be safe if needed
+# Download required packages
+ensure_nltk_package("punkt")
+# punkt_tab is usually included with punkt, but if your model requires it:
+# ensure_nltk_package("punkt_tab")
 
-# --- END NLTK FIX ---
+# Import tokenizer after ensuring resources
+from nltk.tokenize import word_tokenize
+
 # --- Configuration & Constants ---
 st.set_page_config(
     page_title="Creative Text Generator",
