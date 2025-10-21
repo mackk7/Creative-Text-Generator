@@ -11,16 +11,35 @@ import requests # Make sure to add 'requests' to your requirements.txt
 from tqdm import tqdm
 from model import TextGenerator # Imports your model class from model.py
 
+# --- ADD NLTK IMPORT HERE ---
+import nltk
+# --- END NLTK IMPORT ---
+
 # --- NEW: Download NLTK Data on Startup ---
-# This is CRUCIAL for Streamlit Cloud deployment
+# Define a path likely writable on Streamlit Cloud
+NLTK_DATA_PATH = os.path.join(os.path.expanduser("~"), "nltk_data") 
+
+# Ensure this path exists in NLTK's search paths
+if NLTK_DATA_PATH not in nltk.data.path:
+    nltk.data.path.append(NLTK_DATA_PATH)
+    print(f"Added {NLTK_DATA_PATH} to NLTK data path.")
+
 try:
     nltk.data.find('tokenizers/punkt')
     print("NLTK 'punkt' tokenizer already downloaded.")
 except LookupError:
-    print("NLTK 'punkt' tokenizer not found. Downloading...")
-    # Make sure 'nltk' is in your requirements.txt
-    nltk.download('punkt', quiet=True)
-    print("NLTK 'punkt' downloaded.")
+    print(f"NLTK 'punkt' tokenizer not found. Downloading to {NLTK_DATA_PATH}...")
+    try:
+        # Explicitly tell it where to download
+        nltk.download('punkt', download_dir=NLTK_DATA_PATH, quiet=True) 
+        print("NLTK 'punkt' downloaded.")
+        # Verify immediately after download
+        nltk.data.find('tokenizers/punkt') 
+        print("Verified 'punkt' presence after download.")
+    except Exception as download_error:
+        st.error(f"Failed to download NLTK 'punkt' data: {download_error}")
+        st.error("Deployment cannot continue without NLTK data.")
+        st.stop()
 # --- END NLTK DOWNLOAD ---
 # --- Configuration & Constants ---
 st.set_page_config(
