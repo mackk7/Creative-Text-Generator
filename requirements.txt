@@ -4,3 +4,4 @@ pandas
 nltk
 requests
 tqdm
+numpy
