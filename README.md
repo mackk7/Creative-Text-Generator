@@ -1,5 +1,7 @@
 🎨 Creative Text Generator — End-to-End NLP Project (PyTorch & Streamlit)
 
+https://creative-text-generator-zu6p6wmqnffrcxkbjamazk.streamlit.app/   ||   https://github.com/mackk7/Creative-Text-Generator.git
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 
@@ -10,14 +12,15 @@ This project showcases the full lifecycle from data engineering and model traini
 🚀 Live Demo
 
 Interact with the deployed app here:
-➡️ https://yourname-streamlit-app.streamlit.app
+➡️ (https://creative-text-generator-zu6p6wmqnffrcxkbjamazk.streamlit.app/)
 
 🖼️ Preview
 
-
 Example: Screenshot or GIF of the Streamlit interface
+<img width="1851" height="955" alt="Screenshot 2025-10-21 154229" src="https://github.com/user-attachments/assets/3eef7332-079b-4bc0-8343-b507cf73b9af" />
 
-Example Output (Top-K Sampling, k=5, T=0.8):
+
+Example Output (Top-K Sampling, k=3, T=0.8):
 
 Seed: The city sleeps but
 Generated: the city sleeps but i know that i'm not alone...
@@ -96,17 +99,10 @@ Embedding	256
 Dropout	0.5
 Sampling	Top-K (k=5), Temperature=0.8
 Corpus	Lyrics + News (1.5M sequences)
-🔮 Future Enhancements
-
-Build a Flask/FastAPI backend for /generate endpoint
-
-Deploy model as an API (Docker/Cloud Run)
-
-Connect multiple UIs (Streamlit, web apps, etc.)
 
 👨‍💻 Developed By
 
-Mynk
+Mayank
 
 Project built with ❤️ using PyTorch & Streamlit
 
