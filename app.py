@@ -11,11 +11,10 @@ import requests # Make sure to add 'requests' to your requirements.txt
 from tqdm import tqdm
 from model import TextGenerator # Imports your model class from model.py
 
-# Define a writable path in Streamlit Cloud
+# Define a path writable on Streamlit Cloud
 NLTK_DATA_PATH = os.path.join(os.getcwd(), "nltk_data")
 if NLTK_DATA_PATH not in nltk.data.path:
     nltk.data.path.append(NLTK_DATA_PATH)
-    print(f"Appended {NLTK_DATA_PATH} to NLTK data path.")
 
 # Helper function to download any NLTK package if missing
 def ensure_nltk_package(pkg_name):
@@ -32,10 +31,9 @@ def ensure_nltk_package(pkg_name):
             st.error(f"FATAL ERROR: Could not download NLTK '{pkg_name}': {e}")
             st.stop()
 
-# Download required packages
+# Download both required packages
 ensure_nltk_package("punkt")
-# punkt_tab is usually included with punkt, but if your model requires it:
-# ensure_nltk_package("punkt_tab")
+ensure_nltk_package("punkt_tab")  # This is essential for your model
 
 # Import tokenizer after ensuring resources
 from nltk.tokenize import word_tokenize
