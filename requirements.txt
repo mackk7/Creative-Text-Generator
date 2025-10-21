@@ -1,0 +1,6 @@
+streamlit
+torch
+pandas
+nltk
+requests
+tqdm

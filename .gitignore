@@ -1,0 +1,21 @@
+
+# --- 1. The Large Trained Model Files ---
+# CRITICAL: These are the 100MB+ files. They are hosted on Google Drive, NOT GitHub.
+creative_text_generator.pth
+model_epoch_*.pth
+
+# --- 2. The Massive Datasets ---
+# Never commit raw data this large to Git.
+*.csv
+
+# --- 3. Python Environment and Build Files ---
+# Do NOT upload your virtual environment or cache files.
+venv/
+.venv
+__pycache__/
+*.pyc
+*.pyo
+
+# --- 4. OS/IDE Files (General Cleanup) ---
+.DS_Store # Mac operating system files
+Thumbs.db # Windows thumbnail cache
