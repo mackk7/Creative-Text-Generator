@@ -1,6 +1,7 @@
 🎨 Creative Text Generator — End-to-End NLP Project (PyTorch & Streamlit)
 
-https://creative-text-generator-zu6p6wmqnffrcxkbjamazk.streamlit.app/   ||   https://github.com/mackk7/Creative-Text-Generator.git
+(https://creative-text-generator-zu6p6wmqnffrcxkbjamazk.streamlit.app/) 
+(https://github.com/mackk7/Creative-Text-Generator.git)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -55,7 +56,7 @@ Weights: creative_text_generator.pth hosted externally (e.g., Google Drive)
 
 ⚙️ Local Setup
 1. Clone Repository
-git clone https://github.com/yourusername/creative-text-generator.git
+git clone (https://github.com/mackk7/Creative-Text-Generator.git)
 cd creative-text-generator
 
 2. Create Environment
@@ -83,7 +84,7 @@ python preprocess.py
 4. Configure Model URL
 
 Edit app.py → find MODEL_URL = ""
-Replace with your direct download link for creative_text_generator.pth.
+https://www.dropbox.com/scl/fi/may99yg8hro9571prwlv8/creative_text_generator.pth?rlkey=4xft0gnpgq68r8bbietfpjtal&st=d98r0pak&dl=0
 
 5. Run the App
 streamlit run app.py
@@ -97,7 +98,7 @@ Layers	2
 Hidden Size	512
 Embedding	256
 Dropout	0.5
-Sampling	Top-K (k=5), Temperature=0.8
+Sampling	Top-K (k=3), Temperature=0.8
 Corpus	Lyrics + News (1.5M sequences)
 
 👨‍💻 Developed By
@@ -107,5 +108,7 @@ Mayank
 Project built with ❤️ using PyTorch & Streamlit
 
 🪪 License
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-This project is licensed under the MIT License
+
+
